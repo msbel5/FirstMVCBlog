@@ -1,0 +1,44 @@
+﻿.UserSettings{
+    background-color: transparent;    
+    position: fixed;
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;    
+    text-align: center;
+    text-decoration: none;      
+}
+
+.HoverSet{    
+    position: fixed;
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;       
+}
+
+#Profile , #Security{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#Profile , #Security, #Account{
+    position: relative;
+    background-color: black;
+    border-width: 150px;
+    font-size: 18px;
+    border-radius: 5px 5px 0px 0px; 
+    padding: 3px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+    bottom:-30px;
+    transition-duration: 0.3s;
+    
+}
+
+#Profile:hover , #Security:hover, #Account:hover{
+    bottom: 0px;    
+}

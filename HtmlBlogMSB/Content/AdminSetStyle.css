@@ -1,0 +1,54 @@
+﻿.AdminBar{
+    background-color: transparent;    
+    position: fixed;
+    width: auto;
+    bottom: 0;
+
+    top: 0;
+    margin: auto;    
+    text-align: right;
+    text-decoration: none;
+    float: right;       
+
+}
+
+.HoverAd{    
+    position: fixed;
+    width: auto;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    margin: auto;  
+    width: 50px;  
+}
+
+#Users , #Articles{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#Users , #Articles, #Categories{
+    position: relative;
+    background-color: lightcoral;
+    border-width: 150px;
+    font-size: 18px;
+    border-radius: 5px 0px 0px 5px; 
+    padding: 3px;
+    padding-left: 25px;
+    padding-right: 25px;    
+    right:-30px;
+    transition-duration: 0.3s;
+}
+#Users{
+    top:40%;
+}
+#Articles{
+    top:50%
+}
+#Categories{
+    top:60%;
+}
+
+#Users:hover , #Articles:hover, #Categories:hover{
+    right: 70px;    
+}

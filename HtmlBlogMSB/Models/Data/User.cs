@@ -37,7 +37,7 @@ namespace HtmlBlogMSB.Models.Data
         [Required]
         public string ActivationCode { get; set; }
         [Required]
-        public bool IsActivated { get; set; }
+        public bool IsActivated { get; set; }       
 
 
         public virtual ICollection<Comment> Comments { get; set; }

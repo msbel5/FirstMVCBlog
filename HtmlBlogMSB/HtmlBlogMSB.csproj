@@ -151,17 +151,23 @@
     <Content Include="Areas\_SignedIn\Views\Shared\HPLayOut.cshtml" />
     <Content Include="Areas\_SignedIn\Views\Shared\_UserSettings.cshtml" />
     <Content Include="Areas\_SignedIn\Views\Shared\_NavBar.cshtml" />
+    <Content Include="Areas\_Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\_SignedIn\Views\UserHome\Index.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\LogInOut.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\_Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\_Admin\_AdminAreaRegistration.cs" />
+    <Compile Include="Areas\_SignedIn\Controllers\UserHomeController.cs" />
     <Compile Include="Areas\_SignedIn\_SignedInAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,6 +185,8 @@
     <Compile Include="Models\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
+    <Compile Include="Models\ViewModels\LoginVM.cs" />
+    <Compile Include="Models\ViewModels\RegisterVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,10 +210,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\_Admin\Controllers\" />
     <Folder Include="Areas\_Admin\Models\" />
-    <Folder Include="Areas\_SignedIn\Controllers\" />
     <Folder Include="Areas\_SignedIn\Models\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

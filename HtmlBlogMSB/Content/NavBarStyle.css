@@ -27,18 +27,24 @@
     vertical-align: top;
     width: auto;   
 }
+ .LogInOut{
+     position:absolute;
+     top:0;
+     right:0;
+     margin-right:10px;
+ }
 
 #LogBtn{
     margin: auto;
     text-align: right;
     vertical-align: middle;
-    float: left;
+    float: right;
     font-size: 55px;
     margin-left: 5px;
     margin-top: 5px;
     z-index:1;
     background-color:transparent;
-    border:none;
+    border:none;    
 }
 
 .NavLinks>a{
@@ -52,4 +58,8 @@
 .NavLinks>a:hover {
     border-bottom: 3px solid black;
     width: 50px;
+}
+
+.NavLinks{
+    margin-left:-5px;
 }

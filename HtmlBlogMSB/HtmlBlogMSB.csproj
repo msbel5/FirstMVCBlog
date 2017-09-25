@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminSetStyle.css" />
+    <Content Include="Content\LayoutStyle.css" />
     <Content Include="Content\UserSettingStyle.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -146,6 +147,10 @@
     <Content Include="Areas\_Admin\Views\Shared\_NavBar.cshtml" />
     <Content Include="Areas\_Admin\Views\Shared\_UserSettings.cshtml" />
     <Content Include="Areas\_Admin\Views\Shared\_AdminSettings.cshtml" />
+    <Content Include="Areas\_SignedIn\Views\web.config" />
+    <Content Include="Areas\_SignedIn\Views\Shared\HPLayOut.cshtml" />
+    <Content Include="Areas\_SignedIn\Views\Shared\_UserSettings.cshtml" />
+    <Content Include="Areas\_SignedIn\Views\Shared\_NavBar.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -156,6 +161,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\_Admin\_AdminAreaRegistration.cs" />
+    <Compile Include="Areas\_SignedIn\_SignedInAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,7 +192,6 @@
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Shared\HPLayOut.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Shared\_UserSettings.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -199,6 +204,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\_Admin\Controllers\" />
     <Folder Include="Areas\_Admin\Models\" />
+    <Folder Include="Areas\_SignedIn\Controllers\" />
+    <Folder Include="Areas\_SignedIn\Models\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

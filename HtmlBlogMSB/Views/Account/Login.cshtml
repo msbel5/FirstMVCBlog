@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/HPLayOut.cshtml";
+}
+@using HtmlBlogMSB.Models.ViewModels
+@model LoginVM
+
+<h2>Login</h2>
+@using(Html.BeginForm()){ 
+    @Html.TextBoxFor(x => x.Email);<br />
+    @Html.PasswordFor(x => x.Password);<br />
+    @Html.CheckBoxFor(x => x.RememberMe);<br />
+    <input type="submit" name="LogIn" value="Oturum Aç" />
+}
+

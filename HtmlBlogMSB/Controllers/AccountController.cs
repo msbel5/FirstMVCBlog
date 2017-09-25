@@ -29,8 +29,10 @@ namespace HtmlBlogMSB.Controllers
             if (DataModel.Password == model.Password)
             {
                 FormsAuthentication.SetAuthCookie(DataModel.UserName, model.RememberMe);
-
-                return RedirectToAction("Index", "Home");
+                if (DataModel.IsAdmin)
+                    return RedirectToAction("Index", "AdminHome", new { area = "_Admin" });
+                else
+                    return RedirectToAction("Index", "UserHome", new { area = "_SignedIn" });
             }           
             
 
@@ -69,7 +71,7 @@ namespace HtmlBlogMSB.Controllers
                 m.ActivationCode = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
                 m.CreatedOn = DateTime.Now;
                 m.IsActivated = true;
-                m.IsAdmin = false;                
+                m.IsAdmin = true;                
 
 
                 if (UR.NewUser(m))
@@ -84,8 +86,8 @@ namespace HtmlBlogMSB.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            //oturumu sil ve login yönlendir.
-            return RedirectToAction("Login", "Account");
+            
+            return RedirectToAction("Index", "Home");
         }
     }
 }

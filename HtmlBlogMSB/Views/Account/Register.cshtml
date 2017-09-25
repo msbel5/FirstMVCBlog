@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/HPLayOut.cshtml";
+}
+@using HtmlBlogMSB.Models.ViewModels
+@model RegisterVM
+
+<h2>Register</h2>
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary(false)
+
+    @Html.TextBoxFor(x => x.UserName, new {@placeholder="username" }); <br/>
+
+    @Html.TextBoxFor(x => x.Email, new { @placeholder = "eposta giriniz" })<br />
+    @Html.TextBoxFor(x => x.EmailVerify, new { @placeholder = "eposta tekrar" })<br />
+    @Html.PasswordFor(x => x.Password, new { @placeholder = "parola giriniz" })<br />
+
+    @Html.PasswordFor(x => x.PasswordVerify, new { @placeholder = "parola tekrar" })<br />
+    @Html.TextBoxFor(x=>x.Name,new { @placeholder="isim"})<br/>
+    @Html.TextBoxFor(x => x.SurName, new { @placeholder = "soyisim" })<br />
+    @Html.TextBoxFor(model => model.DoB, new {@type = "date" })
+
+    <input type="submit" name="name" value="Kaydet" />
+}
+

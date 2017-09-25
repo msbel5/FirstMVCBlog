@@ -1,11 +1,11 @@
 ﻿/// <reference path="jquery-3.2.1.min.js" />
 
 
-$(document).ready(function () {
-    if ($.cookie('UserName') != null) {
-        $("#LogIcon").removeClass("glyphicon-log-in").addClass("glyphicon-log-out")        
-    }
-});
+//$(document).ready(function () {
+//    if ($.cookie('UserName') != null) {
+//        $("#LogIcon").removeClass("glyphicon-log-in").addClass("glyphicon-log-out")        
+//    }
+//});
 
 
 $(document).ready(function () {

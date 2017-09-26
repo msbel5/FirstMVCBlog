@@ -18,11 +18,11 @@ namespace HtmlBlogMSB.Models.Data
         public int ID { get; set; }
         [Required, StringLength(12, MinimumLength =4, ErrorMessage = " En az 4 en fazla 12 karakterden oluşan kullanıcı adı girmek zorundasınız."),Index(IsUnique =true)]
         public string UserName { get; set; }
-        [Required, RegularExpression(@"^(?=.*[A-Za-z])(?=.*[0-9])(?=(?:.*?[!@#$%\^&*\(\)\-_+=;:'""\/\[\]{},.<>|`]){2}).{8,15}$", ErrorMessage ="En az bir büyük harf, bir küçük harf, bir rakam ve özel işaret içeren 8 ile  15 karakterden oluşan bi şifre belirlemelisiniz.")]
+        [Required]
         public string Password { get; set; }
         [Required, Compare("Password",ErrorMessage ="Şifreleriniz birbiriyle uyuşmalıdır.")]
         public string PasswordVerify { get; set; }
-        [Required, DataType(DataType.EmailAddress,ErrorMessage ="Geçerli bir Email adresi giriniz."), Index(IsUnique = true)]
+        [Required, DataType(DataType.EmailAddress,ErrorMessage ="Geçerli bir Email adresi giriniz.")]
         public string Email { get; set; }
         [Required, Compare("Email",ErrorMessage ="Emailleriniz birbiriyle uyuşmalıdır.")]
         public string EmailVerify { get; set; }

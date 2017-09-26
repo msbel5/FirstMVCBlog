@@ -71,7 +71,7 @@ namespace HtmlBlogMSB.Controllers
                 m.ActivationCode = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
                 m.CreatedOn = DateTime.Now;
                 m.IsActivated = true;
-                m.IsAdmin = true;                
+                m.IsAdmin = false;                
 
 
                 if (UR.NewUser(m))

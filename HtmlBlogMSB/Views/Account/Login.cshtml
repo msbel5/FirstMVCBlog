@@ -10,7 +10,8 @@
 @using(Html.BeginForm()){ 
     @Html.TextBoxFor(x => x.Email , new { @placeholder = "email" });<br />
     @Html.PasswordFor(x => x.Password, new { @placeholder = "password" });<br />
-    @Html.CheckBoxFor(x => x.RememberMe, new { @placeholder = "remember me" });<br />
+    @Html.Label("Beni Hatırla:") @Html.CheckBoxFor(x => x.RememberMe);<br />
     <input type="submit" name="LogIn" value="Oturum Aç" />
 }
+<a href="/Account/Register">Kayıt Ol</a>
 

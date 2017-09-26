@@ -23,7 +23,7 @@
     @Html.PasswordFor(x => x.PasswordVerify, new { @placeholder = "parola tekrar" })<br />
     @Html.TextBoxFor(x=>x.Name,new { @placeholder="isim"})<br/>
     @Html.TextBoxFor(x => x.SurName, new { @placeholder = "soyisim" })<br />
-    @Html.TextBoxFor(model => model.DoB, new {@type = "date" })
+    @Html.TextBoxFor(model => model.DoB, new { @type = "date" })<br />
 
     <input type="submit" name="name" value="Kaydet" />
 }

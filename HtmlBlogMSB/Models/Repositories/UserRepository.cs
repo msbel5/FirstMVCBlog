@@ -51,15 +51,15 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public User SelectUserbyID(int ID)
         {
-            return DBContext.Users.Find(ID);
+            return DBContext.Users.FirstOrDefault(x => x.ID == ID);
         }
         public User SelectUserbyEmail(string Email)
         {
-            return DBContext.Users.Find(Email);
+            return DBContext.Users.FirstOrDefault(x => x.Email == Email);
         }
         public User SelectUserbyUserName(string UserName)
         {
-            return DBContext.Users.Find(UserName);
+            return DBContext.Users.FirstOrDefault(x => x.UserName == UserName);
         }
 
         public ICollection<User> SelectAllUser()

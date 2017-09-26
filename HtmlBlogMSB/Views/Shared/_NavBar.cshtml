@@ -6,6 +6,17 @@
         <a id="ContactUs" href="#">Contact US</a>
     </div>
 </div>
-<div class="LogInOut">
-    <button id="LogBtn" type="button" class="btn btn-default btn-sm"><span id="LogIcon" class="glyphicon glyphicon-log-in"></span></button>
+<div class="LogInOut">    
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <a href="/Account/Logout" id="LogBtn"><span id="LogIcon" class="glyphicon glyphicon-log-out"></span></a>
+        //<button id="LogBtn" type="button" class="btn btn-default btn-sm"><span id="LogIcon" class="glyphicon glyphicon-log-in"></span></button>
+        //HttpContext.Current.User.Identity.IsAuthenticated
+    }
+    else
+    {
+        <a href="/Account/Login" id="LogBtn"><span id="LogIcon" class="glyphicon glyphicon-log-in"></span></a>
+        //<button id="LogBtn" type="button" class="btn btn-default btn-sm"><span id="LogIcon" class="glyphicon glyphicon-log-out"></span></button>
+    }
+
 </div>

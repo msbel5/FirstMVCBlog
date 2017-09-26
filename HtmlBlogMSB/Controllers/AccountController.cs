@@ -64,9 +64,9 @@ namespace HtmlBlogMSB.Controllers
                 m.Password = model.Password;
                 m.PasswordVerify = model.PasswordVerify;
                 m.DoB = model.DoB;
-                if (String.IsNullOrWhiteSpace(model.Name))                
+                if (!string.IsNullOrWhiteSpace(model.Name))                
                     m.Name = model.Name;
-                if (String.IsNullOrWhiteSpace(model.SurName))
+                if (!string.IsNullOrWhiteSpace(model.SurName))
                     m.SurName = model.SurName;
                 m.ActivationCode = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
                 m.CreatedOn = DateTime.Now;

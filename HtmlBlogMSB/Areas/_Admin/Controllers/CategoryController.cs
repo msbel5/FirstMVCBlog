@@ -29,7 +29,7 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         public ActionResult Add(Category model)
         {
             if (CR.NewCategory(model))
-                return View(model);
+                return RedirectToAction("List", "Category", new { Area="_Admin" });
             else
             {
                 ViewBag.Message = "Kategori Eklenemedi.";
@@ -41,7 +41,7 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         public ActionResult Delete(int id)
         {
            if(CR.RemoveCategory(id))
-            return RedirectToAction("List", "Category");
+            return RedirectToAction("List", "Category", new { Area = "_Admin" });
            else
             {
                 ViewBag.Message = "Kategori Silinemedi.";
@@ -59,14 +59,13 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Category model)
         {
-
-            var data = db.Categories.Find(model.CategoryID);
-            data.CategoryName = model.CategoryName;
-            data.Description = model.Description;
-
-            db.SaveChanges();
-
-            return View(model);
+            if (CR.EditCategory(model))
+                return RedirectToAction("List", "Category", new { Area = "_Admin" });
+            else
+            {
+                ViewBag.Message = "Kategori Düzenlenemdi.";
+                return View();
+            }
         }
     }
 }

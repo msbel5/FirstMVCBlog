@@ -22,7 +22,7 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool RemoveCategory(int ID)
         {
-            var dataModel = DBContext.Categories.Find(ID);
+            var dataModel = DBContext.Categories.FirstOrDefault(x => x.ID == ID);
             bool IsSuccessed = DBContext.Categories.Remove(dataModel) == null ? false : true;
             if (IsSuccessed)
                 return true;
@@ -32,7 +32,7 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool EditCategory(Category model)
         {
-            var dataModel = DBContext.Categories.Find(model.ID);
+            var dataModel = DBContext.Categories.FirstOrDefault(x=>x.ID==model.ID);
             dataModel.Name = model.Name;
             dataModel.Description=model.Description;
             int SuccessedEntries = DBContext.SaveChanges();

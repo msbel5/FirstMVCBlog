@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+@using HtmlBlogMSB.Models.Data
+@model  Category
+
+<div style="text-align:center; margin-top:30px;">
+    <form action="/_Admin/Category/Add" method="post" class="form-inline">
+        <div class="form-group">
+            <label for="Name">Kategori Adı:</label>
+            @Html.TextBoxFor(x => x.Name , new { @class = "form-control", @id = "Name" })            
+        </div>
+        <div class="form-group">
+            <label for="Description">Açıklama:</label>
+            @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @id = "Description" })
+        </div>
+        <button type="submit" class="btn btn-default">Ekle</button>
+    </form>
+</div>

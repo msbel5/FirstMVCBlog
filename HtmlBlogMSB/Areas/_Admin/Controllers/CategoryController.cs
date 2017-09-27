@@ -59,11 +59,12 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Category model)
         {
+            
             if (CR.EditCategory(model))
                 return RedirectToAction("List", "Category", new { Area = "_Admin" });
             else
             {
-                ViewBag.Message = "Kategori Düzenlenemdi.";
+                ViewBag.Message = "Kategori Düzenlenemedi.";
                 return View();
             }
         }

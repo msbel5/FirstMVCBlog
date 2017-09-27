@@ -23,8 +23,9 @@ namespace HtmlBlogMSB.Models.Repositories
         public bool RemoveCategory(int ID)
         {
             var dataModel = DBContext.Categories.FirstOrDefault(x => x.ID == ID);
-            bool IsSuccessed = DBContext.Categories.Remove(dataModel) == null ? false : true;
-            if (IsSuccessed)
+            DBContext.Categories.Remove(dataModel);
+            int SuccessedEntries = DBContext.SaveChanges();
+            if (SuccessedEntries > 0)
                 return true;
             else
                 return false;
@@ -44,7 +45,7 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public Category SelectCategorybyID(int ID)
         {
-            return DBContext.Categories.FirstOrDefault(x=>x.ID==ID);
+            return DBContext.Categories.Find(ID);
         }
 
         public Category SelectCategorybyName(string Name)

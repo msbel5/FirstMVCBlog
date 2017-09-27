@@ -44,12 +44,12 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public Category SelectCategorybyID(int ID)
         {
-            return DBContext.Categories.Find(ID);
+            return DBContext.Categories.FirstOrDefault(x=>x.ID==ID);
         }
 
         public Category SelectCategorybyName(string Name)
         {
-            return DBContext.Categories.Find(Name);
+            return DBContext.Categories.FirstOrDefault(x=>x.Name==Name);
         }
 
         public ICollection<Category> SelectAllCategory()

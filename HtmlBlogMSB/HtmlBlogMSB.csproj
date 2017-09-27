@@ -165,6 +165,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\_Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\_Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\_Admin\_AdminAreaRegistration.cs" />
     <Compile Include="Areas\_SignedIn\Controllers\UserHomeController.cs" />
     <Compile Include="Areas\_SignedIn\_SignedInAreaRegistration.cs" />
@@ -214,6 +215,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\_Admin\Models\" />
+    <Folder Include="Areas\_Admin\Views\Category\" />
     <Folder Include="Areas\_SignedIn\Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -70,7 +70,7 @@ namespace HtmlBlogMSB.Controllers
                     m.SurName = model.SurName;
                 m.ActivationCode = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
                 m.CreatedOn = DateTime.Now;
-                m.IsActivated = true;
+                m.IsActivated = false;
                 m.IsAdmin = false;                
 
 

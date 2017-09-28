@@ -158,6 +158,10 @@
     <Content Include="Areas\_Admin\Views\Category\List.cshtml" />
     <Content Include="Areas\_Admin\Views\Category\Add.cshtml" />
     <Content Include="Areas\_Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\_Admin\Views\User\Add.cshtml" />
+    <Content Include="Areas\_Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\_Admin\Views\User\List.cshtml" />
+    <Content Include="Areas\_Admin\Views\Article\List.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -168,7 +172,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\_Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\_Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\_Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\_Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\_Admin\_AdminAreaRegistration.cs" />
     <Compile Include="Areas\_SignedIn\Controllers\UserHomeController.cs" />
     <Compile Include="Areas\_SignedIn\_SignedInAreaRegistration.cs" />

@@ -12,6 +12,8 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool NewUser(User model)
         {
+            model.CreatedOn = DateTime.Now;
+            model.ActivationCode = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
             DBContext.Users.Add(model);
             int SuccessedEntries = DBContext.SaveChanges();
             if (SuccessedEntries > 0)
@@ -22,9 +24,10 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool RemoveUser(int ID)
         {
-           var dataModel= DBContext.Users.Find(ID);
-           bool IsSuccessed = DBContext.Users.Remove(dataModel)==null ? false:true;
-            if (IsSuccessed)
+            var dataModel = DBContext.Users.FirstOrDefault(x => x.ID == ID);
+            DBContext.Users.Remove(dataModel);
+            int SuccessedEntries = DBContext.SaveChanges();
+            if (SuccessedEntries > 0)
                 return true;
             else
                 return false;

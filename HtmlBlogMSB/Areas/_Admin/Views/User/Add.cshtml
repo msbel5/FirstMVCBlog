@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+@using HtmlBlogMSB.Models.Data
+@model  User
+
+<div style="text-align:center; padding-top:30px; padding-bottom:50px; margin:0 auto; width:250px;">
+    <form action="/_Admin/User/Add" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="Name" >Kullanıcı Adı:</label>
+            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @id = "Name" })
+        </div>
+        <div class="form-group">
+            <label for="Email" >Email:</label>
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "Email" })
+        </div>
+        <div class="form-group">
+            <label for="EmailV" >Email Doğrulama:</label>
+            @Html.TextBoxFor(x => x.EmailVerify, new { @class = "form-control", @id = "EmailV" })
+        </div>
+        <div class="form-group">
+            <label for="Password" >Şifre:</label>
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "Password" })
+        </div>
+        <div class="form-group">
+            <label for="PasswordV" >Şifre Doğrulama:</label>
+            @Html.PasswordFor(x => x.PasswordVerify, new { @class = "form-control", @id = "PasswordV" })
+        </div>
+        <div class="form-group">
+            <label for="DoB" >Doğum Tarihi:</label>
+            @Html.TextBoxFor(x => x.DoB, new { @class = "form-control", @type= "date", @id = "DoB" })
+        </div>
+        <div class="form-group">
+            <label for="Activate">Aktive Et:</label>
+            @Html.CheckBoxFor(x => x.IsActivated, new { @class = "form-control", @id = "Activate" })
+        </div>
+        <div class="form-group">
+            <label for="Admin" >Admin yap:</label>
+            @Html.CheckBoxFor(x => x.IsAdmin, new { @class = "form-control", @id = "Admin" })
+        </div>        
+        <button type="submit" class="btn btn-default">Ekle</button>
+    </form>
+</div>

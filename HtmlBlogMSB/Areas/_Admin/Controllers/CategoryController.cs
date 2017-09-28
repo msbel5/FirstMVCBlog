@@ -19,7 +19,6 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
             return View(model);
         }
 
-        // GET: Category
         public ActionResult Add()
         {
             return View();

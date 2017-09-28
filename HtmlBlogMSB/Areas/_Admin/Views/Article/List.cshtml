@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+@using HtmlBlogMSB.Models.Data
+@model List<Article>
+<div style="margin-top:20px;">
+    <a href="/_Admin/Article/Add">Yeni Makale Ekle</a>
+</div>
+<div>
+    <table class="table table-responsive table-hover table-bordered table-striped" style="border:1px thick; width:90%;margin-left:5%;">
+        <thead>
+        <th>ID</th>
+        <th>Makale Adı</th>
+        <th>Kullanıcı Adı</th>
+        <th>Özet</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+        </thead>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td><p>@item.ID</p></td>
+                <td><p>@item.Title</p></td>
+                <td><p>@item.User.UserName</p></td>
+                <td><p>@item.Summary</p></td>
+                <td><a href="/_Admin/User/Edit/@item.ID">Duzenle</a></td>
+                <td> <a href="/_Admin/User/Delete/@item.ID">Sil</a></td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+

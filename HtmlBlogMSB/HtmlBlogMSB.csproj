@@ -162,6 +162,8 @@
     <Content Include="Areas\_Admin\Views\User\Edit.cshtml" />
     <Content Include="Areas\_Admin\Views\User\List.cshtml" />
     <Content Include="Areas\_Admin\Views\Article\List.cshtml" />
+    <Content Include="Areas\_Admin\Views\Article\Add.cshtml" />
+    <Content Include="Areas\_Admin\Views\Article\Edit.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />

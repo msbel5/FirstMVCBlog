@@ -12,6 +12,7 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool NewComment(Comment model)
         {
+            model.CreatedOn = DateTime.Now;
             DBContext.Comments.Add(model);
             int SuccessedEntries = DBContext.SaveChanges();
             if (SuccessedEntries > 0)
@@ -22,9 +23,10 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool RemoveComments(int ID)
         {
-            var dataModel = DBContext.Comments.Find(ID);
-            bool IsSuccessed = DBContext.Comments.Remove(dataModel) == null ? false : true;
-            if (IsSuccessed)
+            var dataModel = DBContext.Comments.FirstOrDefault(x => x.ID == ID);
+            DBContext.Comments.Remove(dataModel);
+            int SuccessedEntries = DBContext.SaveChanges();
+            if (SuccessedEntries > 0)
                 return true;
             else
                 return false;

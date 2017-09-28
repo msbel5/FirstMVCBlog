@@ -28,7 +28,7 @@ namespace HtmlBlogMSB.Controllers
             User DataModel = UR.SelectUserbyEmail(model.Email);
             if (DataModel.Password == model.Password)
             {
-                FormsAuthentication.SetAuthCookie(DataModel.UserName, model.RememberMe);
+                FormsAuthentication.SetAuthCookie(DataModel.ID.ToString(), model.RememberMe);
                 if (DataModel.IsAdmin)
                     return RedirectToAction("Index", "AdminHome", new { area = "_Admin" });
                 else

@@ -12,6 +12,7 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool NewCategory(Category model)
         {
+           
             DBContext.Categories.Add(model);
             int SuccessedEntries = DBContext.SaveChanges();
             if (SuccessedEntries > 0)

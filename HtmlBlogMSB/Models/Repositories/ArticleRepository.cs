@@ -11,6 +11,11 @@ namespace HtmlBlogMSB.Models.Repositories
         ProjectContext DBContext = new ProjectContext();
         public bool NewArticle(Article model)
         {
+            model.CreatedOn = DateTime.Now;
+            UserRepository UR = new UserRepository();
+            int UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            User UModel = UR.SelectUserbyID(UserID);
+            model.User = UModel;
             DBContext.Articles.Add(model);
             int SuccessedEntries = DBContext.SaveChanges();
             if (SuccessedEntries > 0)

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+@using HtmlBlogMSB.Models.Data
+@model  Article
+
+<div style="text-align:center; padding-top:30px; padding-bottom:50px; margin:0 auto; width:250px;">
+    <form action="/_Admin/Article/Add" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="Title">Başlık:</label>
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @id = "Title", @placeholder="10 ile 35 arasında olmalı" })
+        </div>
+        <div class="form-group">
+            <label for="Summary">Özet:</label>
+            @Html.TextAreaFor(x => x.Summary, new { @class = "form-control", @id = "Summary", @placeholder = "100 ile 500 arasında olmalı" })
+        </div>
+        <div class="form-group">
+            <label for="Context">İçerik</label>
+            @Html.TextAreaFor(x => x.Context, new { @class = "form-control", @id = "Context" })
+        </div>        
+        <button type="submit" class="btn btn-default">Ekle</button>
+    </form>
+</div>
+
+
+

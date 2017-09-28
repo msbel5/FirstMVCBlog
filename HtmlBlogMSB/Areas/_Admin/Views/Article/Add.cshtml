@@ -14,6 +14,10 @@
             @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @id = "Title", @placeholder="10 ile 35 arasında olmalı" })
         </div>
         <div class="form-group">
+            <label for="Category">Kategori:</label>
+            @Html.DropDownList("CID", (IEnumerable<SelectListItem>)ViewBag.Clist, new { @class = "form-control", @id = "Summary", @placeholder = "100 ile 500 arasında olmalı", @multiple = true })
+        </div>
+        <div class="form-group">
             <label for="Summary">Özet:</label>
             @Html.TextAreaFor(x => x.Summary, new { @class = "form-control", @id = "Summary", @placeholder = "100 ile 500 arasında olmalı" })
         </div>

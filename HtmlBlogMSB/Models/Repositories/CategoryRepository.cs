@@ -21,6 +21,8 @@ namespace HtmlBlogMSB.Models.Repositories
                 return false;
         }
 
+        
+
         public bool RemoveCategory(int ID)
         {
             var dataModel = DBContext.Categories.FirstOrDefault(x => x.ID == ID);
@@ -61,8 +63,8 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public ICollection<Category> SelectCategorybyArticle(Article model)
         {
-            Article Article = DBContext.Articles.Find(model.ID);
-            return Article.Categories.ToList();
+            List<Category> clist = DBContext.CategoryArticles.Where(x => x.ArticleId == model.ID).Select(a => a.Category).ToList();
+            return clist;
         }
     }
 }

@@ -12,14 +12,14 @@ namespace HtmlBlogMSB.Models.Data
         public Article()
         {
             this.Comments = new HashSet<Comment>();
-            this.Categories = new HashSet<Category>();
+            this.CategoryCollection = new HashSet<CategoryArticle>();
         }
         public int ID { get; set; }
-        [Required, StringLength(35,MinimumLength =10,ErrorMessage ="10 ile 35 arasında karakter içeren bi başlık girmelisiniz.")]
+        [Required]
         public string Title { get; set; }
-        [Required, StringLength(500, MinimumLength =100,ErrorMessage = "100 ile 500 arasında karakter içeren bir özet girmelisiniz.")]
+        [Required]
         public string Summary { get; set; }
-        [Required, StringLength(1500, MinimumLength = 500, ErrorMessage = "500 ile 1500 arasında karakter içeren bir içerik girmelisiniz.")]
+        [Required]
         public string Context { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }
@@ -28,7 +28,7 @@ namespace HtmlBlogMSB.Models.Data
         
         public virtual User User { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<CategoryArticle> CategoryCollection { get; set; }
 
     }
 }

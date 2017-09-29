@@ -9,13 +9,24 @@ namespace HtmlBlogMSB.Models.Repositories
     public class ArticleRepository
     {
         ProjectContext DBContext = new ProjectContext();
-        public bool NewArticle(Article model)
+        public bool NewArticle(Article model, List<CategoryArticle> CAList)
         {
-            model.CreatedOn = DateTime.Now;            
+            model.CreatedOn = DateTime.Now;
             int UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
             model.UserID = UserID;
-
+            DBContext.CategoryArticles.AddRange(CAList);
             DBContext.Articles.Add(model);
+            int SuccessedEntries = DBContext.SaveChanges();
+            if (SuccessedEntries > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public bool AddCategory(Category Cmodel, Article model)
+        {
+            Article AModel = SelectArticlebyID(model.ID);
+            DBContext.Categories.Attach(Cmodel);
             int SuccessedEntries = DBContext.SaveChanges();
             if (SuccessedEntries > 0)
                 return true;
@@ -34,12 +45,18 @@ namespace HtmlBlogMSB.Models.Repositories
                 return false;
         }
 
-        public bool EditArticle(Article model)
+        public bool EditArticle(Article model, List<CategoryArticle> CAList)
         {
-            var dataModel = DBContext.Articles.Find(model.ID);
+            var dataModel = DBContext.Articles.Find(model.ID);            
             dataModel.Context = model.Context;
             dataModel.Summary = model.Summary;
-            dataModel.Title = model.Title;            
+            dataModel.Title = model.Title;
+            foreach (var item in CAList)
+            {
+                var CAModel = DBContext.CategoryArticles.FirstOrDefault(x => x.ArticleId == item.ArticleId);
+                DBContext.CategoryArticles.Remove(CAModel);                
+            }
+            DBContext.CategoryArticles.AddRange(CAList);
             int SuccessedEntries = DBContext.SaveChanges();
             if (SuccessedEntries > 0)
                 return true;
@@ -58,7 +75,7 @@ namespace HtmlBlogMSB.Models.Repositories
         public ICollection<Article> SelectArticlesbyUser(User User)
         {
             int UserID = DBContext.Users.Find(User.ID).ID;
-            return DBContext.Articles.Where(a => a.UserID==UserID).ToList();                
+            return DBContext.Articles.Where(a => a.UserID == UserID).ToList();
         }
 
         public ICollection<Article> SelectAllArticles()
@@ -68,8 +85,8 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public ICollection<Article> SelectArticlesbyCategory(Category model)
         {
-            Category Category = DBContext.Categories.Find(model.ID);
-            return Category.Articles.ToList();
+            List<Article> alist = DBContext.CategoryArticles.Where(x => x.CategoryId == model.ID).Select(a => a.Article).ToList();
+            return alist;
         }
     }
 }

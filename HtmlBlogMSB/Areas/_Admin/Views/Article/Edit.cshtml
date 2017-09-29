@@ -8,10 +8,14 @@
 @model  Article
 
 <div style="text-align:center; padding-top:30px; padding-bottom:50px; margin:0 auto; width:250px;">
-    <form action="/_Admin/Article/Add" method="post" class="form-horizontal">
+    <form action="/_Admin/Article/Edit" method="post" class="form-horizontal">
         <div class="form-group">
             <label for="Title">Başlık:</label>
             @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @id = "Title", @placeholder = "10 ile 35 arasında olmalı" })
+        </div>
+        <div class="form-group">
+            <label for="Category">Kategori:</label>
+            @Html.DropDownList("CID", (IEnumerable<SelectListItem>)ViewBag.Clist, new { @class = "form-control", @id = "Summary", @placeholder = "100 ile 500 arasında olmalı", @multiple = true })
         </div>
         <div class="form-group">
             <label for="Summary">Özet:</label>
@@ -21,9 +25,10 @@
             <label for="Context">İçerik</label>
             @Html.TextAreaFor(x => x.Context, new { @class = "form-control", @id = "Context" })
         </div>
-        @Html.HiddenFor(x=>x.ID)
-        <button type="submit" class="btn btn-default">Ekle</button>
+        @Html.HiddenFor(x => x.ID)
+        <button type="submit" class="btn btn-default">Düzenle</button>
     </form>
 </div>
+
 
 

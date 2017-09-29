@@ -12,6 +12,7 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
     {
 
         ArticleRepository AR = new ArticleRepository();
+        CategoryRepository CR = new CategoryRepository();
 
         public ActionResult List()
         {
@@ -36,14 +37,17 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         [HttpPost]
         public ActionResult Add(Article model,int[] CID)
         {
-            CategoryRepository CR = new CategoryRepository();
+            List<CategoryArticle> CAlist = new List<CategoryArticle>();
             foreach (var item in CID)
             {
-                Category Cmodel = CR.SelectCategorybyID(item);
-                model.Categories.Add(Cmodel);
-            }            
-            if (AR.NewArticle(model))
+                Category CModel = CR.SelectCategorybyID(item);
+                CAlist.Add(new CategoryArticle { ArticleId = model.ID, CategoryId = CModel.ID });
+            }
+            
+            if (AR.NewArticle(model,CAlist))
+            {
                 return RedirectToAction("List", "Article", new { Area = "_Admin" });
+            }
             else
             {
                 ViewBag.Message = "Makale Eklenemedi.";
@@ -66,15 +70,28 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int ID)
         {
+            CategoryRepository CR = new CategoryRepository();
+            List<SelectListItem> CList = CR.SelectAllCategory().Select(a => new SelectListItem
+            {
+                Text = a.Name,
+                Value = a.ID.ToString()
+
+            }).ToList();
+            ViewBag.Clist = CList;
             var model = AR.SelectArticlebyID(ID);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(Article model)
+        public ActionResult Edit(Article model, int[] CID)
         {
-
-            if (AR.EditArticle(model))
+            List<CategoryArticle> CAlist = new List<CategoryArticle>();
+            foreach (var item in CID)
+            {
+                Category CModel = CR.SelectCategorybyID(item);
+                CAlist.Add(new CategoryArticle { ArticleId = model.ID, CategoryId = CModel.ID });
+            }
+            if (AR.EditArticle(model,CAlist))
                 return RedirectToAction("List", "Article", new { Area = "_Admin" });
             else
             {

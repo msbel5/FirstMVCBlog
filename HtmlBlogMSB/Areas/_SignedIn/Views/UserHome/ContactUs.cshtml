@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Areas/_SignedIn/Views/Shared/HPLayOut.cshtml";
+}
+
+<div class="Page" id="Contact">
+    <h1 class="C_H1">Bize Ulaşın</h1>
+    <div class="C_Content">
+        <div class="Message">
+            <form action="mailto:example@example.com" method="post">
+                <h2 class="M_E">Email'iniz:</h2><input class="Email" type="text" name="Email" id="Email">
+                <h2 class="M_M">Mesajınız:</h2> <textarea name="YMessage" id="YMessage" class="YMessage" cols="75" rows="25"></textarea><br>
+                <button class="Send">Gönder</button> <button class="Reset">Sıfırla</button>
+            </form>
+        </div>
+        <div class="Map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105743.26117753793!2d-118.53831931804778!3d34.08292113093937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bacf22ee5b65%3A0x95c465741fbb54b3!2sGoogle!5e0!3m2!1str!2str!4v1505002254840" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <h6 class="MSB">Muhammet Sıddık Bel<br>msbel5@gmail.com</h6>
+</div>
+

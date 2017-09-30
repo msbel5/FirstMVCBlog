@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Areas/_SignedIn/Views/Shared/HPLayOut.cshtml";
+}
+@using HtmlBlogMSB.Models.Data
+@model Tuple<User, List<Comment>>
+
+
+<div>
+    <div>
+        <h2>Yorumlarım</h2>
+    </div>
+    <table class="table table-responsive table-hover table-bordered table-striped" style="border:1px thick; width:90%;margin-left:5%;">
+        <thead>
+        <th>ID</th>
+        <th>Makale Adı</th>
+        <th>İçerik</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+        </thead>
+
+        @foreach (var item in Model.Item2)
+            {
+            <tr>
+                <td><p>@item.ID</p></td>
+                <td><p>@item.Article.Title</p></td>
+                <td><p>@item.Context</p></td>
+                <td><a href="/_SignedIn/Profile/CommentEdit/@item.ID">Duzenle</a></td>
+                <td> <a href="/_SignedIn/Profile/CommentDelete/@item.ID">Sil</a></td>
+            </tr>
+        }
+    </table>
+
+</div>
+

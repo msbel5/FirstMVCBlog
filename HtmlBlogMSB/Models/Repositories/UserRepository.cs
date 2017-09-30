@@ -65,6 +65,13 @@ namespace HtmlBlogMSB.Models.Repositories
             return DBContext.Users.FirstOrDefault(x => x.UserName == UserName);
         }
 
+        public User GetCurrentUser()
+        {
+            int UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            User CurrentUser = SelectUserbyID(UserID);
+            return CurrentUser;
+        }
+
         public ICollection<User> SelectAllUser()
         {
             return DBContext.Users.ToList();

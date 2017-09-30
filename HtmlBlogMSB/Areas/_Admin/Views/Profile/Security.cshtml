@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Security";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+@using HtmlBlogMSB.Models.Data
+@model  User
+
+<div style="text-align:center; padding-top:30px; padding-bottom:50px; margin:0 auto; width:250px;">
+    <form action="/_Admin/Profile/Security" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="OPassword">Eski Şifre:</label><br />
+            @Html.Password("OPassword", new { @class = "form-control", @id = "OPassword" })
+        </div>
+        <div class="form-group">
+            <label for="Password">Yeni Şifre:</label><br/>
+            @Html.Password("NPassword", new { @class = "form-control", @id = "Password" })
+        </div>
+        <div class="form-group">
+            <label for="PasswordV">Yeni Şifre Doğrulama:</label>
+            @Html.Password("NVPassword", new { @class = "form-control", @id = "PasswordV" })
+        </div>        
+        @Html.HiddenFor(x => x.ID)
+        <button type="submit" class="btn btn-default">Düzenle</button>
+    </form>
+</div>
+<div style="text-align:center">
+    @Html.ActionLink("Hesabınızı silmek için tıklayınız", "DeleteMe", "Profile", null, new { onclick = "return confirm('Hesabınızı silmek istediğinizden emin misiniz?')" })
+</div>

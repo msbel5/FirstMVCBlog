@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+@using HtmlBlogMSB.Models.Data
+@model Tuple<User,List<Article>,List<Comment>>
+
+
+<div>
+    <div>
+        <h2>Makalelerim</h2>
+    </div>
+    <table class="table table-responsive table-hover table-bordered table-striped" style="border:1px thick; width:90%;margin-left:5%;">
+        <thead>
+        <th>ID</th>
+        <th>Makale Adı</th>        
+        <th>Özet</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+        </thead>
+
+        @foreach (var item in Model.Item2)
+            {
+            <tr>
+                <td><p>@item.ID</p></td>
+                <td><p>@item.Title</p></td>                
+                <td><p>@item.Summary</p></td>
+                <td><a href="/_Admin/Profile/ArticleEdit/@item.ID">Duzenle</a></td>
+                <td> <a href="/_Admin/Profile/ArticleDelete/@item.ID">Sil</a></td>                
+            </tr>
+        }
+    </table>
+
+</div>
+
+<div>
+    <div>
+        <h2>Yorumlarım</h2>
+    </div>
+    <table class="table table-responsive table-hover table-bordered table-striped" style="border:1px thick; width:90%;margin-left:5%;">
+        <thead>
+        <th>ID</th>
+        <th>Makale Adı</th>
+        <th>İçerik</th>        
+        <th>Düzenle</th>
+        <th>Sil</th>
+        </thead>
+
+        @foreach (var item in Model.Item3)
+            {
+            <tr>
+                <td><p>@item.ID</p></td>
+                <td><p>@item.Article.Title</p></td>
+                <td><p>@item.Context</p></td>                
+                <td><a href="/_Admin/Profile/CommentEdit/@item.ID">Duzenle</a></td>
+                <td> <a href="/_Admin/Profile/CommentDelete/@item.ID">Sil</a></td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+

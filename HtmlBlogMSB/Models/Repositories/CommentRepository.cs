@@ -41,12 +41,24 @@ namespace HtmlBlogMSB.Models.Repositories
                 return true;
             else
                 return false;
-        }                
+        }     
+        
+        public ICollection<Comment> SelectCommentsbyCurrentUser()
+        {
+            int UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            return DBContext.Comments.Where(x => x.UserID == UserID).ToList();
+        }       
 
         public ICollection<Comment> SelectCommentsbyArticle(Article model)
         {
             int ArticleID = DBContext.Articles.Find(model.ID).ID;
             return DBContext.Comments.Where(a=>a.ArticleID==ArticleID).ToList();
+        }
+
+        public Comment SelectCommentbyID(int ID)
+        {
+            var dataModel = DBContext.Comments.Find(ID);
+            return dataModel;
         }
 
     }

@@ -1,0 +1,76 @@
+﻿.Se_H2{
+    text-align: center;
+}
+
+.Se_P{
+    max-width: 90%;
+    margin-left: 20px;
+    text-indent: 30px;
+}
+
+.Ad_P {
+    text-align: center;
+}
+
+.MSB{
+    text-align: right;
+    margin-right: 30px;
+}
+
+.A_H1{
+    text-align: center;
+}
+
+.A_F{
+    text-align: right;
+    margin-right: 20px;
+}
+
+.A_P-1_Img{
+    float: left;
+}
+
+#About >p {
+    text-indent: 30px;
+}
+
+.C_H1{
+    text-align: center;
+    position: relative;    
+}
+
+.C_Content{
+    text-align: center;
+    display: table-row;
+    top:50%;
+    left: 50%;
+    min-width: 1680px;
+}
+
+.Message{
+    text-align: center;
+    float: left;
+    margin-left: 75px;
+    position: relative;
+    width: 560px;
+    height: 560px;
+    display: table-cell;
+    margin-left: 300px;;
+}
+
+.Map{
+    text-align: center;
+    position: relative;
+    width: 560px;
+    height: 560px;
+    display: table-cell;;
+    padding: 50px;
+}
+
+.Email , .YMessage{
+    background: lightcoral;
+}
+
+.EmailValid , .YMessageValid{
+    background: lightgreen;
+}

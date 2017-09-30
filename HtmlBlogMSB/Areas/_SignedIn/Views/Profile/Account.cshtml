@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Areas/_SignedIn/Views/Shared/HPLayOut.cshtml";
+}
+
+@using HtmlBlogMSB.Models.Data
+@model  User
+
+<div style="text-align:center; padding-top:30px; padding-bottom:50px; margin:0 auto; width:250px;">
+    <form action="/_SignedIn/Profile/Account" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="Name">İsim:</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "Name" })
+        </div>
+        <div class="form-group">
+            <label for="SurName">Soyisim:</label>
+            @Html.TextBoxFor(x => x.SurName, new { @class = "form-control", @id = "SurName" })
+        </div>
+        <div class="form-group">
+            <label for="DoB">Doğum Tarihi:</label>
+            @Html.TextBoxFor(x => x.DoB, new { @class = "form-control", @type = "date", @id = "DoB" })
+        </div>
+        @Html.HiddenFor(x => x.ID)
+        <button type="submit" class="btn btn-default">Düzenle</button>
+    </form>
+</div>
+

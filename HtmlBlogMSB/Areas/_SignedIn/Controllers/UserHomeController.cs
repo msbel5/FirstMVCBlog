@@ -13,5 +13,13 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
         {
             return View();
         }
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }

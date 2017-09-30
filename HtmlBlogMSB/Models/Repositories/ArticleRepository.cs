@@ -54,7 +54,8 @@ namespace HtmlBlogMSB.Models.Repositories
             foreach (var item in CAList)
             {
                 var CAModel = DBContext.CategoryArticles.FirstOrDefault(x => x.ArticleId == item.ArticleId);
-                DBContext.CategoryArticles.Remove(CAModel);                
+                DBContext.CategoryArticles.Remove(CAModel);
+                DBContext.SaveChanges();               
             }
             DBContext.CategoryArticles.AddRange(CAList);
             int SuccessedEntries = DBContext.SaveChanges();
@@ -81,6 +82,12 @@ namespace HtmlBlogMSB.Models.Repositories
         public ICollection<Article> SelectAllArticles()
         {
             return DBContext.Articles.ToList();
+        }
+
+        public ICollection<Article> GetCurrentUserArticles()
+        {
+            int UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            return DBContext.Articles.Where(x => x.UserID == UserID).ToList();
         }
 
         public ICollection<Article> SelectArticlesbyCategory(Category model)

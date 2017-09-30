@@ -26,14 +26,17 @@ namespace HtmlBlogMSB.Controllers
         {
             
             User DataModel = UR.SelectUserbyEmail(model.Email);
-            if (DataModel.Password == model.Password)
+            if (DataModel!=null)
             {
-                FormsAuthentication.SetAuthCookie(DataModel.ID.ToString(), model.RememberMe);
-                if (DataModel.IsAdmin)
-                    return RedirectToAction("Index", "AdminHome", new { area = "_Admin" });
-                else
-                    return RedirectToAction("Index", "UserHome", new { area = "_SignedIn" });
-            }           
+                if (DataModel.Password == model.Password)
+                {
+                    FormsAuthentication.SetAuthCookie(DataModel.ID.ToString(), model.RememberMe);
+                    if (DataModel.IsAdmin)
+                        return RedirectToAction("Index", "AdminHome", new { area = "_Admin" });
+                    else
+                        return RedirectToAction("Index", "UserHome", new { area = "_SignedIn" });
+                }
+            }                 
             
 
             ViewBag.Message = "Kullanıcı adınız veya parolanızı tekrar giriniz";

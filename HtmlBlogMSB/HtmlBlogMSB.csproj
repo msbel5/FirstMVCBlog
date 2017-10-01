@@ -177,6 +177,10 @@
     <Content Include="Areas\_Admin\Views\AdminHome\ContactUs.cshtml" />
     <Content Include="Areas\_SignedIn\Views\UserHome\AboutUs.cshtml" />
     <Content Include="Areas\_SignedIn\Views\UserHome\ContactUs.cshtml" />
+    <Content Include="Areas\_SignedIn\Views\UserHome\Article.cshtml" />
+    <Content Include="Areas\_Admin\Views\AdminHome\Article.cshtml" />
+    <Content Include="Areas\_Admin\Views\Profile\CommentEdit.cshtml" />
+    <Content Include="Areas\_SignedIn\Views\Profile\CommentEdit.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\CAUsScript.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -235,6 +239,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Article.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

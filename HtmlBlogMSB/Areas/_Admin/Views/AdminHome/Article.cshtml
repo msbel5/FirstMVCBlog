@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Article";
+    Layout = "~/Areas/_Admin/Views/Shared/AdminLayout.cshtml";
+}
+@using HtmlBlogMSB.Models.Data
+@model  Tuple<Article, List<Comment>>
+
+<div style="width:90%;margin-left:5%">
+    <div class="Article">
+        <div>
+            <h1>@Model.Item1.Title</h1>
+        </div>
+        <div>
+            <p>@Model.Item1.Context</p>
+        </div>
+        <div>
+            <h5 style="text-align:left;margin:auto;">@Model.Item1.User.UserName</h5><h5 style="text-align:right;margin:auto;">@Model.Item1.CreatedOn</h5>
+        </div>
+    </div>
+    <div class="Comments">
+        <h3>Yorumlar</h3>
+        <div>
+            @if (Model.Item2.Count > 0)
+            {
+                foreach (var item in Model.Item2)
+                {
+                    <div style="border-radius: 25px;border: 2px solid #73AD21;padding: 10px; margin:5px;">
+                        <div>
+                            <p>@item.Context</p>
+                        </div>
+                        <div>
+                            <h6 style="text-align:left;margin:auto;">@item.User.UserName</h6><h6 style="text-align:right;margin:auto;">@item.CreatedOn</h6>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div style="border-radius: 25px;border: 2px solid #ff0000;padding: 10px; margin:5px;">
+                    <h4>Henüz yorum yapılmamış.</h4>
+                </div>
+            }
+        </div>
+        <div>
+            <form action="/_Admin/AdminHome/Article" method="post" class="form-horizontal" style="margin:auto">
+                <div class="form-group">
+                    @Html.TextArea("Context", new { @class = "form-control", @id = "Context" })
+                </div>
+                @Html.Hidden("ArticleID", Model.Item1.ID.ToString())
+                <button type="submit" class="btn btn-default">Yorum Ekle</button>
+            </form>
+
+        </div>
+    </div>
+</div>

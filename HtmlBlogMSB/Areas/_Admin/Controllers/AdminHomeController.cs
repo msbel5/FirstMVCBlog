@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HtmlBlogMSB.Models.Data;
+using HtmlBlogMSB.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,16 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
 {
     public class AdminHomeController : Controller
     {
+        ArticleRepository AR = new ArticleRepository();
+        CommentRepository CR = new CommentRepository();
+        UserRepository UR = new UserRepository();
+
         // GET: _Admin/AdminHome
         public ActionResult Index()
         {
-            return View();
+            List<Article> model = AR.SelectAllArticles().ToList();
+
+            return View(model);
         }
         public ActionResult AboutUs()
         {
@@ -19,7 +27,28 @@ namespace HtmlBlogMSB.Areas._Admin.Controllers
         }
         public ActionResult ContactUs()
         {
-            return View();
+            return View();            
+        }
+        public ActionResult Article(int ID)
+        {
+            Article model = AR.SelectArticlebyID(ID);
+            List<Comment> Clist = CR.SelectCommentsbyArticle(model).ToList();
+            return View(Tuple.Create(model, Clist));
+        }
+        [HttpPost]
+        public ActionResult Article(string Context, string ArticleID)
+        {
+            Comment Comment = new Comment();
+            Comment.ArticleID = Convert.ToInt32(ArticleID);
+            Comment.Context = Context;
+
+            if (CR.NewComment(Comment))
+                return RedirectToAction("Article/" + Comment.ArticleID, "AdminHome", new { Area = "_Admin" });
+            else
+            {
+                ViewBag.Message = "Yorum Eklenemedi.";
+                return RedirectToAction("Article/" + Comment.ArticleID, "AdminHome", new { Area = "_Admin" });
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HtmlBlogMSB.Models.Data;
+using HtmlBlogMSB.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,14 @@ namespace HtmlBlogMSB.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        ArticleRepository AR = new ArticleRepository();
+        CommentRepository CR = new CommentRepository();
+        
         public ActionResult Index()
         {
-            return View();
+            List<Article> model = AR.SelectAllArticles().ToList();
+
+            return View(model);
         }
         public ActionResult AboutUs()
         {
@@ -20,6 +26,12 @@ namespace HtmlBlogMSB.Controllers
         public ActionResult ContactUs()
         {
             return View();
+        }
+        public ActionResult Article(int ID)
+        {
+            Article model = AR.SelectArticlebyID(ID);
+            List<Comment> Clist = CR.SelectCommentsbyArticle(model).ToList();
+            return View(Tuple.Create(model,Clist));
         }
     }
 }

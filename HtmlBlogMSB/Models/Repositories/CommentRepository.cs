@@ -12,6 +12,7 @@ namespace HtmlBlogMSB.Models.Repositories
 
         public bool NewComment(Comment model)
         {
+            model.UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
             model.CreatedOn = DateTime.Now;
             DBContext.Comments.Add(model);
             int SuccessedEntries = DBContext.SaveChanges();

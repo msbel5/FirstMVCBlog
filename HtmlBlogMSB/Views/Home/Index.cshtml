@@ -3,6 +3,23 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/HPLayOut.cshtml";
 }
+@using HtmlBlogMSB.Models.Data
+@model  List<Article>
 
-<h2>Index</h2>
+<div>
+    @foreach (var item in Model)
+    {
+        <div style="width:90%;margin-left:5%;">
+            <div>
+                <h2><a href="/Home/Article/@item.ID">@item.Title</a></h2>
+            </div>
+            <div>
+                <p>@item.Summary</p>
+            </div>
+            <div>
+                <h5 style="text-align:left;margin:auto;">@item.User.UserName</h5><h5 style="text-align:right;margin:auto;">@item.CreatedOn</h5>
+            </div>
+        </div>
+    }
+</div>
 

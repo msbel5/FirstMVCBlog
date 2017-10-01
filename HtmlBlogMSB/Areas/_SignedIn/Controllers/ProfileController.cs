@@ -17,7 +17,7 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
         CategoryRepository CaR = new CategoryRepository();
 
         // GET: _Admin/Profile
-
+        [Authorize]
         public ActionResult MyProfile()
         {
             User CurrentUser = UR.GetCurrentUser();            
@@ -25,14 +25,14 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
             return View(Tuple.Create<User,  List<Comment>>(CurrentUser,  CList));
         }
 
-
+        [Authorize]
         [HttpGet]
         public ActionResult Account()
         {
             var model = UR.GetCurrentUser();
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Account(User model)
         {
@@ -54,13 +54,14 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
                 return View();
             }
         }
+        [Authorize]
         [HttpGet]
         public ActionResult Security()
         {
             var model = UR.GetCurrentUser();
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Security(string OPassword, string NPassword, string NVPassword)
         {
@@ -86,7 +87,7 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
         }
 
 
-
+        [Authorize]
         public ActionResult CommentDelete(int id)
         {
             if (CR.RemoveComments(id))
@@ -97,7 +98,7 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
                 return View();
             }
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult CommentEdit(int ID)
         {
@@ -105,7 +106,7 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
             var model = CR.SelectCommentbyID(ID);
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult CommentEdit(Comment model)
         {
@@ -116,8 +117,8 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
                 ViewBag.Message = "Yorum Düzenlenemedi.";
                 return View();
             }
-        }        
-
+        }
+        [Authorize]
         public ActionResult DeleteMe()
         {
             int UserID = UR.GetCurrentUser().ID;

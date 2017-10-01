@@ -1,4 +1,5 @@
 ﻿using HtmlBlogMSB.Models.Data;
+using HtmlBlogMSB.Models.Data.CustomAuthorization;
 using HtmlBlogMSB.Models.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Web.Security;
 
 namespace HtmlBlogMSB.Areas._Admin.Controllers
 {
+    [Authorize]
+    [IsAdmin]
     public class ProfileController : Controller
     {
         UserRepository UR = new UserRepository();

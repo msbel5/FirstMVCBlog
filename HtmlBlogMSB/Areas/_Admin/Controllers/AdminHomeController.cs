@@ -1,4 +1,5 @@
 ﻿using HtmlBlogMSB.Models.Data;
+using HtmlBlogMSB.Models.Data.CustomAuthorization;
 using HtmlBlogMSB.Models.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,17 @@ using System.Web.Mvc;
 
 namespace HtmlBlogMSB.Areas._Admin.Controllers
 {
+
+    [Authorize]
+    [IsAdmin]
     public class AdminHomeController : Controller
-    {
+    {        
         ArticleRepository AR = new ArticleRepository();
         CommentRepository CR = new CommentRepository();
         UserRepository UR = new UserRepository();
 
         // GET: _Admin/AdminHome
+        
         public ActionResult Index()
         {
             List<Article> model = AR.SelectAllArticles().ToList();

@@ -3,12 +3,12 @@
     position: fixed;
     width: auto;
     bottom: 0;
-
     top: 0;
     margin: auto;    
     text-align: right;
     text-decoration: none;
-    float: right;       
+    float: right;   
+        
 
 }
 
@@ -20,11 +20,13 @@
     top: 0;
     margin: auto;  
     width: 50px;  
+       
 }
 
 #Users , #Articles{
     margin-top: 100px;
     margin-bottom: 100px;
+      
 }
 
 #Users , #Articles, #Categories{
@@ -38,17 +40,23 @@
     padding-right: 25px;    
     right:-30px;
     transition-duration: 0.3s;
+    
 }
 #Users{
     top:40%;
+       
 }
 #Articles{
-    top:50%
+    top:50%;
+    
 }
 #Categories{
     top:60%;
+      
 }
 
 #Users:hover , #Articles:hover, #Categories:hover{
-    right: 70px;    
+    right: 70px;
+        
 }
+

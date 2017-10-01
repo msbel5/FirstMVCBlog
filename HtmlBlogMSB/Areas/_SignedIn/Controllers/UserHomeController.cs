@@ -14,20 +14,24 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
         CommentRepository CR = new CommentRepository();
         UserRepository UR = new UserRepository();
         // GET: _SignedIn/UserHome
+        [Authorize]
         public ActionResult Index()
         {
             List<Article> model = AR.SelectAllArticles().ToList();
 
             return View(model);
         }
+        [Authorize]
         public ActionResult AboutUs()
         {
             return View();
         }
+        [Authorize]
         public ActionResult ContactUs()
         {
             return View();
         }
+        [Authorize]
         public ActionResult Article(int ID)
         {
             Article model = AR.SelectArticlebyID(ID);
@@ -35,6 +39,7 @@ namespace HtmlBlogMSB.Areas._SignedIn.Controllers
 
             return View(Tuple.Create(model, Clist));
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Article(string Context, string ArticleID)
         {

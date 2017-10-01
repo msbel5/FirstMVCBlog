@@ -33,5 +33,9 @@ namespace HtmlBlogMSB.Controllers
             List<Comment> Clist = CR.SelectCommentsbyArticle(model).ToList();
             return View(Tuple.Create(model,Clist));
         }
+        public ActionResult NotActivated()
+        {
+            return View();
+        }
     }
 }

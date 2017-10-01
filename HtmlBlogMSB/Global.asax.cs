@@ -17,25 +17,6 @@ namespace HtmlBlogMSB
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            //var data = HttpContext.Current.Request.Cookies.Keys;
-            //if (data.Count > 0)
-            //{
-            //    User model = UR.GetCurrentUser();
-            //    if (model.IsActivated)
-            //    {
-            //        if (model.IsAdmin)
-            //        {
-            //            Response.Redirect("/_Admin/AdminHome/Index");
-            //        }
-            //        else
-            //        {
-            //            Response.Redirect("/_SignedIn/UserHome/Index");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("/Home/NotActivated");
-            //    }
             }
         }
 
